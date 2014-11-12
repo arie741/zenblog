@@ -15,4 +15,7 @@
         (let [bjudul (:judul (:params req))
               bisi (:isi (:params req))]
           (do (post/post bjudul bisi) 
-            (resp/redirect "/")))))
+            (resp/redirect "/"))))
+  (GET "/blog/:blogid" [blogid]
+       (pages/blogpage blogid))
+  )

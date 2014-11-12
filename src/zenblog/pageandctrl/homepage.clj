@@ -7,13 +7,13 @@
             ))
 
 
-(defn blog [kjudul kisi]
-  (hc/html [:div {:class "panel"} "\n    " [:h2 {} [kjudul {}]] "\n    " [:p {} [kisi {}] "... " [:a {:href "/blog1"} "Baca Selengkapnya"]]]))
+(defn blog [kjudul kisi kid]
+  (hc/html [:div {:class "panel"} "\n    " [:h2 {} [kjudul {}]] "\n    " [:p {} [kisi {}] "... " [:a {:href (str "/blog/" kid)} "Baca Selengkapnya"]]]))
 
 (defn blogtemplate [blognum]
   (if (zero? blognum)
     ""
-    (str (blog (keyword (str "bjudul" blognum)) (keyword (str "bisi" blognum))) (blogtemplate (dec blognum)))))
+    (str (blog (keyword (str "bjudul" blognum)) (keyword (str "bisi" blognum)) blognum) (blogtemplate (dec blognum)))))
 
 
 (html/deftemplate home "selmer/home.html"
