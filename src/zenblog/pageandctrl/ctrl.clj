@@ -6,8 +6,7 @@
             [hiccup.core :as hc]
             [zenblog.pageandctrl.homepage :refer :all] 
             [zenblog.pageandctrl.postblog :refer :all]
-            [zenblog.pageandctrl.blogpage :refer :all]
-            ))
+            [zenblog.pageandctrl.blogpage :refer :all]))
 
 ;;Pages
 
@@ -23,4 +22,4 @@
 
 ;;blogpage
 (defn blogpage [id]
-  (createpage (blogp 1) (str "Blog" ctitle)))
+  (createpage #(blogp id) (str "Blog" ctitle)))

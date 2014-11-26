@@ -17,8 +17,20 @@
     false))
 
 (defn findById [id]
+  (assert (integer? id))
   (first (filter #(hasId % id) (dbvalues))))
 
 (defn countblog []
   (count (dbvalues)))
+
+(def mydb (atom {}))
+
+(defn get-by-id [id]
+  (get @mydb id))
+
+(defn uuid [] (str (java.util.UUID/randomUUID)))
+
+(defn add-art [judul isi]
+  (swap! mydb assoc (uuid) {:judul judul :isi isi}))
+
 

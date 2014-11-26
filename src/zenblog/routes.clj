@@ -3,7 +3,8 @@
             [zenblog.layout :as page]
             [zenblog.pageandctrl.ctrl :as pages]
             [zenblog.pageandctrl.postblog :as post]
-            [noir.response :as resp]))
+            [noir.response :as resp]
+            ))
 
 
 (defroutes home
@@ -17,5 +18,5 @@
           (do (post/post bjudul bisi) 
             (resp/redirect "/"))))
   (GET "/blog/:blogid" [blogid]
-       (pages/blogpage blogid))
+       (pages/blogpage (read-string blogid)))
   )
