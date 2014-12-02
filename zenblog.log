@@ -544,3 +544,7 @@
                                      [37morg.eclipse.jetty.util.thread.QueuedThreadPool$3.run[m  [32m      QueuedThreadPool.java:  543[m
                                                                      [37mjava.lang.Thread.run[m  [32m                Thread.java:  744[m
 
+2014-Nov-27 00:04:28 +0700 Arie-PC INFO [zenblog.handler] - zenblog is shutting down...
+2014-Dec-02 16:41:29 +0700 Arie-PC INFO [zenblog.handler] - zenblog started successfully
+2014-Dec-02 16:48:24 +0700 Arie-PC INFO [zenblog.handler] - zenblog started successfully
+2014-Dec-02 16:49:47 +0700 Arie-PC INFO [zenblog.handler] - zenblog started successfully
