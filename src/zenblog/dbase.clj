@@ -6,6 +6,7 @@
           :username "username"
           :password "password"))
 
+;;db as couch
 (def db "zenblog")
 
 (defn dbvalues []
@@ -23,7 +24,11 @@
 (defn countblog []
   (count (dbvalues)))
 
-(def mydb (atom {}))
+;;;db as atom
+
+(def dbloc "resources/dbase.txt")
+
+(def mydb (atom (read-string (slurp dbloc))))
 
 (defn get-by-id [id]
   (get @mydb id))
@@ -31,6 +36,27 @@
 (defn uuid [] (str (java.util.UUID/randomUUID)))
 
 (defn add-art [judul isi]
-  (swap! mydb assoc (uuid) {:judul judul :isi isi}))
+  (swap! mydb assoc (uuid) {:judul judul :isi isi :rate 0}))
 
+(defn dbvals []
+  (vals @mydb))
 
+(defn find-vals [dat val]
+  (if (= (first (vals dat)) val)
+  (keys dat)
+  nil))
+
+(defn rate? [dat rate]
+  (if (= (:rate dat) rate)
+    true
+    false))
+
+(defn find-by-rate [rate]
+  (assert (integer? rate))
+  (filter #(rate? % rate) (dbvals)))
+
+(defn top-rate []
+  (apply max (map :rate (dbvals))))
+
+(defn countart []
+  (count (dbvals)))

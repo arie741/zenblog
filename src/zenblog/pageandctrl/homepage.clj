@@ -13,24 +13,26 @@
 (defn blogtemplate [blognum]
   (if (zero? blognum)
     ""
-    (str (blog (keyword (str "bjudul" blognum)) (keyword (str "bisi" blognum)) blognum) (blogtemplate (dec blognum)))))
+    (str (blogtemplate (dec blognum)) (blog (keyword (str "bjudul" blognum)) (keyword (str "bisi" blognum)) blognum))))
 
+(defn sort-by-rate [rank]
+  (first (db/find-by-rate (- (db/top-rate) rank))))
 
 (html/deftemplate home "selmer/home.html"
   []
-  [:blogtemplate] (html/html-content (blogtemplate (db/countblog)))
-  [:bjudul6] (html/content (:Judul (db/findById 6)))
-  [:bisi6] (html/content (apply str (take 600 (:Isi (db/findById 6)))))
-  [:bjudul5] (html/content (:Judul (db/findById 5)))
-  [:bisi5] (html/content (apply str (take 600 (:Isi (db/findById 5)))))
-  [:bjudul4] (html/content (:Judul (db/findById 4)))
-  [:bisi4] (html/content (apply str (take 600 (:Isi (db/findById 4)))))
-  [:bjudul3] (html/content (:Judul (db/findById 3)))
-  [:bisi3] (html/content (apply str (take 600 (:Isi (db/findById 3)))))
-  [:bjudul2] (html/content (:Judul (db/findById 2)))
-  [:bisi2] (html/content (apply str (take 600 (:Isi (db/findById 2)))))
-  [:bjudul1] (html/content (:Judul (db/findById 1)))
-  [:bisi1] (html/content (apply str (take 600 (:Isi (db/findById 1)))))
+  [:blogtemplate] (html/html-content (blogtemplate (db/countart)))
+  [:bjudul1] (html/content (:judul (sort-by-rate 0)))
+  [:bisi1] (html/content (apply str (take 600 (:isi (sort-by-rate 0)))))
+  [:bjudul2] (html/content (:judul (sort-by-rate 1)))
+  [:bisi2] (html/content (apply str (take 600 (:isi (sort-by-rate 1)))))
+  [:bjudul3] (html/content (:judul (sort-by-rate 2)))
+  [:bisi3] (html/content (apply str (take 600 (:isi (sort-by-rate 2)))))
+  [:bjudul4] (html/content (:judul (sort-by-rate 3)))
+  [:bisi4] (html/content (apply str (take 600 (:isi (sort-by-rate 3)))))
+  [:bjudul5] (html/content (:judul (sort-by-rate 4)))
+  [:bisi5] (html/content (apply str (take 600 (:isi (sort-by-rate 4)))))
+  [:bjudul6] (html/content (:judul (sort-by-rate 5)))
+  [:bisi6] (html/content (apply str (take 600 (:isi (sort-by-rate 5)))))
   )
 
 

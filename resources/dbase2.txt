@@ -1,0 +1,3 @@
+{"071ad0e5-83f2-4ddb-b44d-bbc36cb4d2ea" {:judul "asd3", :isi "isi3", :rate 1}, 
+"f1879c55-130c-4d75-9478-5ad266834dd1" {:judul "asd2", :isi "isi2", :rate 2}, 
+"d2a5dd7c-c076-46b2-bd50-39b933417d40" {:judul "asd1", :isi "isi1", :rate 3}}

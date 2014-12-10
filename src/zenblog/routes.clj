@@ -4,6 +4,7 @@
             [zenblog.pageandctrl.ctrl :as pages]
             [zenblog.pageandctrl.postblog :as post]
             [noir.response :as resp]
+            [zenblog.dbase :as db]
             ))
 
 
@@ -15,7 +16,7 @@
   (POST "/action-post" req
         (let [bjudul (:judul (:params req))
               bisi (:isi (:params req))]
-          (do (post/post bjudul bisi) 
+          (do (db/add-art bjudul bisi) 
             (resp/redirect "/"))))
   (GET "/blog/:blogid" [blogid]
        (pages/blogpage (read-string blogid)))

@@ -20,6 +20,6 @@
 (defn postpage []
   (createpage postb (str "Post" ctitle)))
 
-;;blogpage;;;
+;;blogpage
 (defn blogpage [id]
   (createpage #(blogp id) (str "Blog" ctitle)))
